@@ -144,6 +144,28 @@
             justify-content: space-between;
             gap: 30px;
         }
+        .about-container .summary .cv-btn {
+        display: inline-block;
+        margin-top: 15px; /* Khoảng cách phía trên nút */
+        padding: 10px 20px; /* Khoảng cách bên trong nút */
+        background-color: #008080; /* Màu teal */
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 14px;
+        border-radius: 20px; /* Bo góc */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .about-container .summary .cv-btn i {
+        margin-right: 8px; /* Khoảng cách giữa biểu tượng và chữ */
+    }
+
+    .about-container .summary .cv-btn:hover {
+        background-color: transparent;
+        color: #008080; /* Màu teal khi hover */
+        border: 2px solid #008080; /* Viền teal khi hover */
+    }
         .about-container .photo {
             flex: 1;
         }
@@ -291,70 +313,122 @@
         .projects-container {
             max-width: 1100px; /* Giới hạn chiều rộng để căn giữa */
             margin: 0 auto; /* Căn giữa */
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các project-item xuống dòng nếu không đủ chỗ */
+            gap: 20px; /* Khoảng cách giữa các project-item */
+            justify-content: center; /* Căn giữa các project-item */
         }
+
         .project-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            flex: 1 1 300px; /* Mỗi project-item có chiều rộng tối thiểu 300px */
+            max-width: 350px; /* Chiều rộng tối đa của mỗi project-item */
+            height: 450px; /* Chiều cao cố định cho tất cả các thẻ */
             background-color: white; /* Nền trắng */
-            padding: 20px; /* Khoảng cách bên trong */
-            border-radius: 5px; /* Bo góc */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
-        }
-        .project-item i {
-            color: white;
-            background-color: #008080; /* Màu teal */
-            width: 40px;
-            height: 40px;
+            border-radius: 10px; /* Bo góc */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
+            overflow: hidden; /* Đảm bảo hình ảnh không tràn ra ngoài */
+            transition: transform 0.3s; /* Hiệu ứng phóng to khi hover */
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
         }
+
+        .project-item:hover {
+            transform: translateY(-5px); /* Hiệu ứng nâng lên khi hover */
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 200px; /* Chiều cao cố định cho hình ảnh */
+            object-fit: cover; /* Đảm bảo hình ảnh không bị méo */
+        }
+
         .project-item .details {
-            flex: 1;
+            padding: 20px; /* Khoảng cách bên trong */
+            flex: 1; /* Chiếm toàn bộ không gian còn lại */
+            display: flex;
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+            justify-content: space-between; /* Đẩy các nút xuống dưới */
         }
-        .project-item .details .time {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 5px;
-        }
+
         .project-item .details .title {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
+
         .project-item .details .description {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 10px;
+            font-size: 14px;
+            max-height: 120px; /* Giới hạn chiều cao của phần mô tả */
+            overflow: hidden; /* Ẩn nội dung vượt quá */
+            text-overflow: ellipsis; /* Hiển thị dấu ... khi nội dung bị cắt */
+            display: -webkit-box;
+            -webkit-line-clamp: 5; /* Giới hạn số dòng (5 dòng) */
+            -webkit-box-orient: vertical; /* Hỗ trợ cắt dòng trên các trình duyệt Webkit */
         }
-        .project-item .details a {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: transparent;
-            color: #008080; /* Màu teal */
-            border: 2px solid #008080; /* Viền teal */
-            border-radius: 20px;
+
+        .project-item .details .buttons {
+            display: flex;
+            gap: 10px; /* Khoảng cách giữa các nút */
+            margin-top: auto; /* Đẩy các nút xuống dưới cùng */
+        }
+
+        .project-item .details .buttons a {
+            flex: 1; /* Các nút chiếm đều không gian */
+            padding: 8px 0; /* Khoảng cách bên trong nút */
+            text-align: center;
             text-decoration: none;
             font-size: 14px;
             text-transform: uppercase;
+            border-radius: 20px; /* Bo góc nút */
             transition: background-color 0.3s, color 0.3s;
         }
-        .project-item .details a:hover {
+
+        .project-item .details .buttons .github-btn {
+            background-color: transparent;
+            color: #008080; /* Màu teal */
+            border: 2px solid #008080; /* Viền teal */
+        }
+
+        .project-item .details .buttons .github-btn:hover {
             background-color: #008080; /* Nền teal khi hover */
             color: white;
         }
 
-        /* Other Sections */
-        .experience {
-            /* background-color: #f9f9f9; */
+        .project-item .details .buttons .demo-btn {
+            background-color: #008080; /* Nền teal */
+            color: white;
+            border: 2px solid #008080; /* Viền teal */
         }
+
+        .project-item .details .buttons .demo-btn:hover {
+            background-color: transparent;
+            color: #008080; /* Màu teal khi hover */
+        }
+
+        /* Other Sections */
         .experience .item {
-            max-width: 1100px; /* Giới hạn chiều rộng để căn giữa */
+            max-width: 1100px; /* Giữ nguyên giới hạn chiều rộng để căn giữa */
             margin: 20px auto; /* Căn giữa */
+            background-color: white; /* Nền trắng giống các phần khác */
+            padding: 20px; /* Khoảng cách bên trong */
+            border-radius: 5px; /* Bo góc */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
+        }
+        .experience .item h3 {
+            font-size: 20px; /* Kích thước chữ tiêu đề */
+            color: #333; /* Màu chữ */
+            margin-bottom: 5px; /* Khoảng cách dưới tiêu đề */
+        }
+        .experience .item p {
+            color: #666; /* Màu chữ mô tả */
+            line-height: 1.6; /* Khoảng cách dòng */
+        }
+        .experience .item p:first-of-type {
+            font-weight: bold; /* Làm đậm thời gian */
+            margin-bottom: 5px; /* Khoảng cách dưới thời gian */
         }
         .contact {
             background-color: #008080; /* Màu teal */
@@ -489,24 +563,27 @@
                 margin: 0 auto;
             }
 
-            .education-item,
-            .project-item {
+            .education-item {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .education-item i,
-            .project-item i {
+            .education-item i {
                 margin-bottom: 10px;
             }
 
-            .footer-container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .project-item {
+                flex: 1 1 45%; /* Hai project-item trên một hàng */
+                max-width: 45%;
+                height: 400px; /* Giảm chiều cao trên tablet */
             }
-            .footer-container .footer-info,
-            .footer-container .footer-socials {
-                width: 100%;
+
+            .project-item img {
+                height: 180px; /* Giảm chiều cao hình ảnh trên tablet */
+            }
+
+            .project-item .details .description {
+                max-height: 100px; /* Giảm chiều cao mô tả trên tablet */
+                -webkit-line-clamp: 4; /* Giảm số dòng trên tablet */
             }
         }
 
@@ -602,18 +679,29 @@
                 font-size: 14px;
             }
 
-            .project-item .details .time {
-                font-size: 14px;
+            .project-item {
+                flex: 1 1 100%; /* Mỗi project-item chiếm toàn bộ chiều rộng trên mobile */
+                max-width: 100%;
+                height: 380px; /* Giảm chiều cao trên mobile */
             }
+
+            .project-item img {
+                height: 150px; /* Giảm chiều cao hình ảnh trên mobile */
+            }
+
             .project-item .details .title {
-                font-size: 20px;
+                font-size: 18px;
             }
+
             .project-item .details .description {
-                font-size: 14px;
+                font-size: 13px;
+                max-height: 90px; /* Giảm chiều cao mô tả trên mobile */
+                -webkit-line-clamp: 4; /* Giảm số dòng trên mobile */
             }
-            .project-item .details a {
+
+            .project-item .details .buttons a {
                 font-size: 12px;
-                padding: 6px 12px;
+                padding: 6px 0;
             }
 
             .contact h2 {
@@ -658,6 +746,7 @@
             <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
             <li><a href="#experience"><i class="fas fa-briefcase"></i> Experiences</a></li>
             <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+            <li><a href="#projects"><i class="fas fa-box"></i> Projects</a></li>
         </ul>
     </div>
 
@@ -682,9 +771,9 @@
                     <img src="Images/avartar.jpg" alt="Your Photo">
                 </div>
                 <div class="summary">
-                    <h3>Summary</h3>
-                    <p>I'm Nguyen Le Thanh Phong, a Back-End Developer with 3 years of experience in .NET technologies and 1 year of experience in ASP.NET MVC, with good knowledge of Database Design, Design Pattern, Object-Oriented Analysis and Design.</p>
-                    <p>Learning new languages and technologies is what I am passionate about (I self-taught Django with 3 weeks). I am considered a team-player because I like to help others and tend to work well within groups. I can also do some mentoring tasks and do code reviewing for other team members.</p>
+                    <h3>Let me introduce myself</h3>
+                    <p>I love learning, especially about new technologies, and I’m pretty good at teaching myself. I enjoy working with data, so I aspire to become a back-end developer. I’m particularly fascinated by ASP.NET MVC. Whenever I have free time, I like building a website with new features to experiment with. I’m truly passionate about web development and related products.</p>
+                    <a href="https://drive.google.com/file/d/10n4DXGvG1M04WKx1knGkjo8cTN4aSeTT/view?usp=sharing" class="cv-btn" download><i class="fas fa-download"></i> My CV</a>
                 </div>
                 <div class="contact-info">
                     <h3>Contact Info</h3>
@@ -745,16 +834,21 @@
         <!-- Experience Section -->
         <div class="section experience" id="experience">
             <h2>Experiences</h2>
-            <!-- <div class="item">
-                <h3>Back-End Developer - Công ty XYZ</h3>
-                <p>2023 - Present</p>
-                <p>Developed and optimized RESTful APIs using ASP.NET MVC and SQL Server.</p>
+            <div class="item">
+                <h3>Self-Taught Back-End Development</h3>
+                <p>2022 - Present</p>
+                <p>Actively learning and building projects using ASP.NET MVC, C#, and databases like MySQL and MongoDB through online resources (e.g., YouTube, Udemy, and documentation). Developed a strong foundation in back-end development by creating functional web applications.</p>
             </div>
             <div class="item">
-                <h3>Intern - Công ty ABC</h3>
-                <p>2022 - 2023</p>
-                <p>Assisted in building database-driven web applications.</p>
-            </div> -->
+                <h3>University Projects - Ho Chi Minh City University of Industry and Trade</h3>
+                <p>2022 - Present</p>
+                <p>Collaborated with classmates on various software engineering assignments, focusing on designing and implementing web-based applications. Gained hands-on experience with teamwork, problem-solving, and applying theoretical knowledge to practical projects.</p>
+            </div>
+            <div class="item">
+                <h3>Personal Projects</h3>
+                <p>Ongoing</p>
+                <p>Independently designed and developed multiple web projects (e.g., Cafeteria Shop, Booksaw, Glasses Shop, Game Runner) using HTML, CSS, JavaScript, and ASP.NET MVC. Enhanced skills in database design, API development, and responsive web design.</p>
+            </div>
         </div>
 
         <!-- Education Section -->
@@ -766,9 +860,14 @@
                     <div class="details">
                         <div class="time">2022-2026</div>
                         <div class="major">Major in Software Engineering</div>
-                        <div class="school">Ho Chi Minh City University Of Industry And Trade</div>
+                        <div class="school">Ho Chi Minh City University Of Industry And Trade (HUIT)</div>
                         <div class="description">
-                            Through activities in the soft skills club and dormitory life, I learned the importance of teamwork. Over four years, I built a strong foundation in software engineering and web development, allowing me to grow into a developer who can progress quickly and in the right direction.
+                            During my four years at university, I honed my ability to self-learn and explore new things quickly. I also developed strong teamwork and listening skills. I’m constantly working to improve myself, aiming to become an excellent programmer in the future.
+                            <p>GPA Total: 8,90 - 3,78</p>
+                            <p>60% scholarship for Semester 1, 2022 - 2023 academic year</p>
+                            <p> 60% scholarship for Semester 1, 2023 - 2024 academic year</p>
+                            <p> 100% scholarship for Semester 2, 2023 - 2024 academic year</p>
+                            <p> 100% scholarship for Semester 1, 2024 - 2025 academic year</p>
                         </div>
                     </div>
                 </div>
@@ -780,44 +879,61 @@
             <h2>Projects</h2>
             <div class="projects-container">
                 <div class="project-item">
-                    <i class="fas fa-box"></i>
+                    <img src="Images/cafe.png" alt="Cafeteria Shop">
                     <div class="details">
-                        <div class="time">10.2024 - 11.2024</div>
                         <div class="title">Cafeteria Shop</div>
                         <div class="description">
                             Coffee shop website built with ASP.NET MVC<br>
                             Developed a fully functional online coffee shop website with features such as product management, order processing, user authentication, and an interactive shopping cart. Integrated MongoDB for data storage and implemented a user-friendly UI with responsive design. Gained hands-on experience in web development, database management, and teamwork while working on this project.
                         </div>
-                        <a target="_blank" href="https://cafe.nguyenlethanhphong.io.vn">VISIT THIS WEBSITE</a>
+                        <div class="buttons">
+                            <a target="_blank" href="https://github.com/Phong3000000000/WebCafe" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+                            <a target="_blank" href="https://cafe.nguyenlethanhphong.io.vn" class="demo-btn"><i class="fas fa-eye"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-item">
-                    <i class="fas fa-box"></i>
+                    <img src="Images/booksaw.png" alt="Booksaw">
                     <div class="details">
-                        <div class="time">03.2025 - 04.2025</div>
                         <div class="title">Booksaw</div>
                         <div class="description">
                             Online bookstore built with ASP.NET MVC<br>
                             Developed a fully functional online bookstore featuring book catalog browsing, category filter, book details view, user registration/login, and shopping cart management. Implemented an admin dashboard for managing books, categories, and users. Utilized Entity Framework Code First with MS SQL Server for database operations and followed the MVC architecture. Applied responsive web design principles to ensure compatibility across devices and gained valuable experience in backend development, database design, and user authentication.
                         </div>
-                        <a target="_blank" href="https://booksaw.nguyenlethanhphong.io.vn">VISIT THIS WEBSITE</a>
+                        <div class="buttons">
+                            <a target="_blank" href="https://github.com/Phong3000000000/WebBanSach" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+                            <a target="_blank" href="https://booksaw.nguyenlethanhphong.io.vn" class="demo-btn"><i class="fas fa-eye"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-item">
-                    <i class="fas fa-box"></i>
+                    <img src="Images/anna.png" alt="Glasses Shop">
                     <div class="details">
-                        <div class="time">02.2024 - 03.2024</div>
                         <div class="title">Glasses Shop</div>
                         <div class="description">
-                            Built with ASP.NET MVC and SQL Server. A system to manage employee data.
+                            The website focuses on creating a harmonious and user-friendly interface design, incorporating a few features such as embedding Google Maps to locate stores.
                         </div>
-                        <a target="_blank" href="https://anna.nguyenlethanhphong.io.vn">VISIT THIS WEBSITE</a>
+                        <div class="buttons">
+                            <a target="_blank" href="https://github.com/Phong3000000000/WebMatKinh" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+                            <a target="_blank" href="https://anna.nguyenlethanhphong.io.vn" class="demo-btn"><i class="fas fa-eye"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="Images/game.png" alt="Game">
+                    <div class="details">
+                        <div class="title">Game runner</div>
+                        <div class="description">
+                            The game is developed using HTML, CSS, and JavaScript, employing the Hill Climbing algorithm to guide the character to the destination, while the monsters utilize the A* algorithm to pursue the player.
+                        </div>
+                        <div class="buttons">
+                            <a target="_blank" href="https://github.com/Phong3000000000/GameRunner" class="github-btn"><i class="fab fa-github"></i> GitHub</a>
+                            <a target="_blank" href="https://game.nguyenlethanhphong.io.vn" class="demo-btn"><i class="fas fa-eye"></i> Demo</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Contact Section -->
 
         <!-- Footer -->
         <footer>
